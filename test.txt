@@ -1,0 +1,304 @@
+
+-----Thread 0 is starting step 0-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 0 == 0 (4*(0))
+Elements: 108 714 45 632 67 566 141 534 303 316 323 44 179 645 97 348 
+Psum so far: 108 714 45 632 67 566 141 534 303 316 323 44 179 645 97 348 
+
+[start]Thread 0 Step 0: start_index = 0, end when 0<4
+[if]Thread 0 is setting psum[3] to 677 [elements[3] + elements[2]]
+[if]Thread 0 is setting psum[2] to 759 [elements[2] + elements[1]]
+[if]Thread 0 is setting psum[1] to 822 [elements[1] + elements[0]]
+[else]Thread 0 is setting psum[0] to 108
+[]Thread 0: {108} {822} {759} {677} {67} {566} {141} {534} {303} {316} {323} {44} {179} {645} {97} {348} 
+
+-----Thread 1 is starting step 0-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 1 == 0 (4*(0))
+Elements: 108 714 45 632 67 566 141 534 303 316 323 44 179 645 97 348 
+Psum so far: 108 822 759 677 67 566 141 534 303 316 323 44 179 645 97 348 
+
+[start]Thread 1 Step 0: start_index = 4, end when 4<8
+[if]Thread 1 is setting psum[7] to 675 [elements[7] + elements[6]]
+[if]Thread 1 is setting psum[6] to 707 [elements[6] + elements[5]]
+[if]Thread 1 is setting psum[5] to 633 [elements[5] + elements[4]]
+[if]Thread 1 is setting psum[4] to 699 [elements[4] + elements[3]]
+[]Thread 1: {108} {822} {759} {677} {699} {633} {707} {675} {303} {316} {323} {44} {179} {645} {97} {348} 
+
+-----Thread 2 is starting step 0-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 2 == 0 (4*(0))
+Elements: 108 714 45 632 67 566 141 534 303 316 323 44 179 645 97 348 
+Psum so far: 108 822 759 677 699 633 707 675 303 316 323 44 179 645 97 348 
+
+[start]Thread 2 Step 0: start_index = 8, end when 8<12
+[if]Thread 2 is setting psum[11] to 367 [elements[11] + elements[10]]
+[if]Thread 2 is setting psum[10] to 639 [elements[10] + elements[9]]
+[if]Thread 2 is setting psum[9] to 619 [elements[9] + elements[8]]
+[if]Thread 2 is setting psum[8] to 837 [elements[8] + elements[7]]
+[]Thread 2: {108} {822} {759} {677} {699} {633} {707} {675} {837} {619} {639} {367} {179} {645} {97} {348} 
+
+-----Thread 3 is starting step 0-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 3 == 0 (4*(0))
+Elements: 108 714 45 632 67 566 141 534 303 316 323 44 179 645 97 348 
+Psum so far: 108 822 759 677 699 633 707 675 837 619 639 367 179 645 97 348 
+
+[start]Thread 3 Step 0: start_index = 12, end when 12<16
+[if]Thread 3 is setting psum[15] to 445 [elements[15] + elements[14]]
+[if]Thread 3 is setting psum[14] to 742 [elements[14] + elements[13]]
+[if]Thread 3 is setting psum[13] to 824 [elements[13] + elements[12]]
+[if]Thread 3 is setting psum[12] to 223 [elements[12] + elements[11]]
+[]Thread 3: {108} {822} {759} {677} {699} {633} {707} {675} {837} {619} {639} {367} {223} {824} {742} {445} 
+[]Thread 2: [108] [822] [759] [677] [699] [633] [707] [675] [837] [619] [639] [367] [223] [824] [742] [445] 
+
+
+[unlock]Thread 2 local step: 1, args current_step: 0
+Thread 2: 108, 822, 759, 677, 699, 633, 707, 675, 837, 619, 639, 367, 223, 824, 742, 445, 
+
+
+-----Thread 2 is starting step 1-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 4 == 4 (4*(1))
+[copy]Copping array
+[]Thread 0: [108] [822] [759] [677] [699] [633] [707] [675] [837] [619] [639] [367] [223] [824] [742] [445] 
+
+
+[unlock]Thread 0 local step: 1, args current_step: 0
+Thread 0: 108, 822, 759, 677, 699, 633, 707, 675, 837, 619, 639, 367, 223, 824, 742, 445, 
+
+[]Thread 3: [108] [822] [759] [677] [699] [633] [707] [675] [837] [619] [639] [367] [223] [824] [742] [445] 
+
+
+[unlock]Thread 3 local step: 1, args current_step: 0
+Thread 3: 108, 822, 759, 677, 699, 633, 707, 675, 837, 619, 639, 367, 223, 824, 742, 445, 
+
+[]Thread 1: [108] [822] [759] [677] [699] [633] [707] [675] [837] [619] [639] [367] [223] [824] [742] [445] 
+
+
+[unlock]Thread 1 local step: 1, args current_step: 0
+Thread 1: 108, 822, 759, 677, 699, 633, 707, 675, 837, 619, 639, 367, 223, 824, 742, 445, 
+
+Elements: 108 822 759 677 699 633 707 675 837 619 639 367 223 824 742 445 
+Psum so far: 108 822 759 677 699 633 707 675 837 619 639 367 223 824 742 445 
+
+[start]Thread 2 Step 1: start_index = 8, end when 8<12
+[if]Thread 2 is setting psum[11] to 986 [elements[11] + elements[9]]
+[if]Thread 2 is setting psum[10] to 1476 [elements[10] + elements[8]]
+[if]Thread 2 is setting psum[9] to 1294 [elements[9] + elements[7]]
+[if]Thread 2 is setting psum[8] to 1544 [elements[8] + elements[6]]
+
+-----Thread 0 is starting step 1-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 4 == 4 (4*(1))
+[copy]Copping array
+Elements: 108 822 759 677 699 633 707 675 1544 1294 1476 986 223 824 742 445 
+Psum so far: 108 822 759 677 699 633 707 675 1544 1294 1476 986 223 824 742 445 
+
+[start]Thread 0 Step 1: start_index = 0, end when 0<4
+[if]Thread 0 is setting psum[3] to 1499 [elements[3] + elements[1]]
+[if]Thread 0 is setting psum[2] to 867 [elements[2] + elements[0]]
+[else]Thread 0 is setting psum[1] to 822
+[else]Thread 0 is setting psum[0] to 108
+[]Thread 0: {108} {822} {867} {1499} {699} {633} {707} {675} {1544} {1294} {1476} {986} {223} {824} {742} {445} 
+[]Thread 2: {108} {822} {867} {1499} {699} {633} {707} {675} {1544} {1294} {1476} {986} {223} {824} {742} {445} 
+
+-----Thread 3 is starting step 1-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 6 == 4 (4*(1))
+Elements: 108 822 759 677 699 633 707 675 1544 1294 1476 986 223 824 742 445 
+Psum so far: 108 822 867 1499 699 633 707 675 1544 1294 1476 986 223 824 742 445 
+
+[start]Thread 3 Step 1: start_index = 12, end when 12<16
+[if]Thread 3 is setting psum[15] to 1269 [elements[15] + elements[13]]
+[if]Thread 3 is setting psum[14] to 965 [elements[14] + elements[12]]
+[if]Thread 3 is setting psum[13] to 1810 [elements[13] + elements[11]]
+[if]Thread 3 is setting psum[12] to 1699 [elements[12] + elements[10]]
+[]Thread 3: {108} {822} {867} {1499} {699} {633} {707} {675} {1544} {1294} {1476} {986} {1699} {1810} {965} {1269} 
+
+-----Thread 1 is starting step 1-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 7 == 4 (4*(1))
+Elements: 108 822 759 677 699 633 707 675 1544 1294 1476 986 223 824 742 445 
+Psum so far: 108 822 867 1499 699 633 707 675 1544 1294 1476 986 1699 1810 965 1269 
+
+[start]Thread 1 Step 1: start_index = 4, end when 4<8
+[if]Thread 1 is setting psum[7] to 1308 [elements[7] + elements[5]]
+[if]Thread 1 is setting psum[6] to 1406 [elements[6] + elements[4]]
+[if]Thread 1 is setting psum[5] to 1310 [elements[5] + elements[3]]
+[if]Thread 1 is setting psum[4] to 1458 [elements[4] + elements[2]]
+[]Thread 1: {108} {822} {867} {1499} {1458} {1310} {1406} {1308} {1544} {1294} {1476} {986} {1699} {1810} {965} {1269} 
+[]Thread 0: [108] [822] [867] [1499] [1458] [1310] [1406] [1308] [1544] [1294] [1476] [986] [1699] [1810] [965] [1269] 
+
+
+[unlock]Thread 0 local step: 2, args current_step: 0
+Thread 0: 108, 822, 867, 1499, 1458, 1310, 1406, 1308, 1544, 1294, 1476, 986, 1699, 1810, 965, 1269, 
+
+
+-----Thread 0 is starting step 2-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 8 == 8 (4*(2))
+[copy]Copping array
+Elements: 108 822 867 1499 1458 1310 1406 1308 1544 1294 1476 986 1699 1810 965 1269 
+Psum so far: 108 822 867 1499 1458 1310 1406 1308 1544 1294 1476 986 1699 1810 965 1269 
+
+[start]Thread 0 Step 2: start_index = 0, end when 0<4
+[else]Thread 0 is setting psum[3] to 1499
+[else]Thread 0 is setting psum[2] to 867
+[else]Thread 0 is setting psum[1] to 822
+[else]Thread 0 is setting psum[0] to 108
+[]Thread 0: {108} {822} {867} {1499} {1458} {1310} {1406} {1308} {1544} {1294} {1476} {986} {1699} {1810} {965} {1269} 
+[]Thread 2: [108] [822] [867] [1499] [1458] [1310] [1406] [1308] [1544] [1294] [1476] [986] [1699] [1810] [965] [1269] 
+
+
+[unlock]Thread 2 local step: 2, args current_step: 0
+Thread 2: 108, 822, 867, 1499, 1458, 1310, 1406, 1308, 1544, 1294, 1476, 986, 1699, 1810, 965, 1269, 
+
+
+-----Thread 2 is starting step 2-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 9 == 8 (4*(2))
+Elements: 108 822 867 1499 1458 1310 1406 1308 1544 1294 1476 986 1699 1810 965 1269 
+Psum so far: 108 822 867 1499 1458 1310 1406 1308 1544 1294 1476 986 1699 1810 965 1269 
+
+[start]Thread 2 Step 2: start_index = 8, end when 8<12
+[if]Thread 2 is setting psum[11] to 2294 [elements[11] + elements[7]]
+[if]Thread 2 is setting psum[10] to 2882 [elements[10] + elements[6]]
+[if]Thread 2 is setting psum[9] to 2604 [elements[9] + elements[5]]
+[if]Thread 2 is setting psum[8] to 3002 [elements[8] + elements[4]]
+[]Thread 2: {108} {822} {867} {1499} {1458} {1310} {1406} {1308} {3002} {2604} {2882} {2294} {1699} {1810} {965} {1269} 
+[]Thread 3: [108] [822] [867] [1499] [1458] [1310] [1406] [1308] [3002] [2604] [2882] [2294] [1699] [1810] [965] [1269] 
+
+
+[unlock]Thread 3 local step: 2, args current_step: 0
+Thread 3: 108, 822, 867, 1499, 1458, 1310, 1406, 1308, 3002, 2604, 2882, 2294, 1699, 1810, 965, 1269, 
+
+
+-----Thread 3 is starting step 2-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 10 == 8 (4*(2))
+Elements: 108 822 867 1499 1458 1310 1406 1308 1544 1294 1476 986 1699 1810 965 1269 
+Psum so far: 108 822 867 1499 1458 1310 1406 1308 3002 2604 2882 2294 1699 1810 965 1269 
+
+[start]Thread 3 Step 2: start_index = 12, end when 12<16
+[if]Thread 3 is setting psum[15] to 2255 [elements[15] + elements[11]]
+[if]Thread 3 is setting psum[14] to 2441 [elements[14] + elements[10]]
+[if]Thread 3 is setting psum[13] to 3104 [elements[13] + elements[9]]
+[if]Thread 3 is setting psum[12] to 3243 [elements[12] + elements[8]]
+[]Thread 3: {108} {822} {867} {1499} {1458} {1310} {1406} {1308} {3002} {2604} {2882} {2294} {3243} {3104} {2441} {2255} 
+[]Thread 1: [108] [822] [867] [1499] [1458] [1310] [1406] [1308] [3002] [2604] [2882] [2294] [3243] [3104] [2441] [2255] 
+
+
+[unlock]Thread 1 local step: 2, args current_step: 0
+Thread 1: 108, 822, 867, 1499, 1458, 1310, 1406, 1308, 3002, 2604, 2882, 2294, 3243, 3104, 2441, 2255, 
+
+
+-----Thread 1 is starting step 2-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 11 == 8 (4*(2))
+Elements: 108 822 867 1499 1458 1310 1406 1308 1544 1294 1476 986 1699 1810 965 1269 
+Psum so far: 108 822 867 1499 1458 1310 1406 1308 3002 2604 2882 2294 3243 3104 2441 2255 
+
+[start]Thread 1 Step 2: start_index = 4, end when 4<8
+[if]Thread 1 is setting psum[7] to 2807 [elements[7] + elements[3]]
+[if]Thread 1 is setting psum[6] to 2273 [elements[6] + elements[2]]
+[if]Thread 1 is setting psum[5] to 2132 [elements[5] + elements[1]]
+[if]Thread 1 is setting psum[4] to 1566 [elements[4] + elements[0]]
+[]Thread 1: {108} {822} {867} {1499} {1566} {2132} {2273} {2807} {3002} {2604} {2882} {2294} {3243} {3104} {2441} {2255} 
+[]Thread 0: [108] [822] [867] [1499] [1566] [2132] [2273] [2807] [3002] [2604] [2882] [2294] [3243] [3104] [2441] [2255] 
+
+
+[unlock]Thread 0 local step: 3, args current_step: 0
+Thread 0: 108, 822, 867, 1499, 1566, 2132, 2273, 2807, 3002, 2604, 2882, 2294, 3243, 3104, 2441, 2255, 
+
+
+-----Thread 0 is starting step 3-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 12 == 12 (4*(3))
+[copy]Copping array
+Elements: 108 822 867 1499 1566 2132 2273 2807 3002 2604 2882 2294 3243 3104 2441 2255 
+Psum so far: 108 822 867 1499 1566 2132 2273 2807 3002 2604 2882 2294 3243 3104 2441 2255 
+
+[start]Thread 0 Step 3: start_index = 0, end when 0<4
+[else]Thread 0 is setting psum[3] to 1499
+[else]Thread 0 is setting psum[2] to 867
+[else]Thread 0 is setting psum[1] to 822
+[else]Thread 0 is setting psum[0] to 108
+[]Thread 0: {108} {822} {867} {1499} {1566} {2132} {2273} {2807} {3002} {2604} {2882} {2294} {3243} {3104} {2441} {2255} 
+[]Thread 2: [108] [822] [867] [1499] [1566] [2132] [2273] [2807] [3002] [2604] [2882] [2294] [3243] [3104] [2441] [2255] 
+
+
+[unlock]Thread 2 local step: 3, args current_step: 0
+Thread 2: 108, 822, 867, 1499, 1566, 2132, 2273, 2807, 3002, 2604, 2882, 2294, 3243, 3104, 2441, 2255, 
+
+
+-----Thread 2 is starting step 3-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 13 == 12 (4*(3))
+Elements: 108 822 867 1499 1566 2132 2273 2807 3002 2604 2882 2294 3243 3104 2441 2255 
+Psum so far: 108 822 867 1499 1566 2132 2273 2807 3002 2604 2882 2294 3243 3104 2441 2255 
+
+[start]Thread 2 Step 3: start_index = 8, end when 8<12
+[if]Thread 2 is setting psum[11] to 3793 [elements[11] + elements[3]]
+[if]Thread 2 is setting psum[10] to 3749 [elements[10] + elements[2]]
+[if]Thread 2 is setting psum[9] to 3426 [elements[9] + elements[1]]
+[if]Thread 2 is setting psum[8] to 3110 [elements[8] + elements[0]]
+[]Thread 2: {108} {822} {867} {1499} {1566} {2132} {2273} {2807} {3110} {3426} {3749} {3793} {3243} {3104} {2441} {2255} 
+[]Thread 3: [108] [822] [867] [1499] [1566] [2132] [2273] [2807] [3110] [3426] [3749] [3793] [3243] [3104] [2441] [2255] 
+
+
+[unlock]Thread 3 local step: 3, args current_step: 0
+Thread 3: 108, 822, 867, 1499, 1566, 2132, 2273, 2807, 3110, 3426, 3749, 3793, 3243, 3104, 2441, 2255, 
+
+
+-----Thread 3 is starting step 3-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 14 == 12 (4*(3))
+Elements: 108 822 867 1499 1566 2132 2273 2807 3002 2604 2882 2294 3243 3104 2441 2255 
+Psum so far: 108 822 867 1499 1566 2132 2273 2807 3110 3426 3749 3793 3243 3104 2441 2255 
+
+[start]Thread 3 Step 3: start_index = 12, end when 12<16
+[if]Thread 3 is setting psum[15] to 5062 [elements[15] + elements[7]]
+[if]Thread 3 is setting psum[14] to 4714 [elements[14] + elements[6]]
+[if]Thread 3 is setting psum[13] to 5236 [elements[13] + elements[5]]
+[if]Thread 3 is setting psum[12] to 4809 [elements[12] + elements[4]]
+[]Thread 3: {108} {822} {867} {1499} {1566} {2132} {2273} {2807} {3110} {3426} {3749} {3793} {4809} {5236} {4714} {5062} 
+[]Thread 1: [108] [822] [867] [1499] [1566] [2132] [2273] [2807] [3110] [3426] [3749] [3793] [4809] [5236] [4714] [5062] 
+
+
+[unlock]Thread 1 local step: 3, args current_step: 0
+Thread 1: 108, 822, 867, 1499, 1566, 2132, 2273, 2807, 3110, 3426, 3749, 3793, 4809, 5236, 4714, 5062, 
+
+
+-----Thread 1 is starting step 3-----
+[copy check]Checking if thread_completed_count == thread_count*(local_step): 15 == 12 (4*(3))
+Elements: 108 822 867 1499 1566 2132 2273 2807 3002 2604 2882 2294 3243 3104 2441 2255 
+Psum so far: 108 822 867 1499 1566 2132 2273 2807 3110 3426 3749 3793 4809 5236 4714 5062 
+
+[start]Thread 1 Step 3: start_index = 4, end when 4<8
+[else]Thread 1 is setting psum[7] to 2807
+[else]Thread 1 is setting psum[6] to 2273
+[else]Thread 1 is setting psum[5] to 2132
+[else]Thread 1 is setting psum[4] to 1566
+[]Thread 1: {108} {822} {867} {1499} {1566} {2132} {2273} {2807} {3110} {3426} {3749} {3793} {4809} {5236} {4714} {5062} 
+[]Thread 0: [108] [822] [867] [1499] [1566] [2132] [2273] [2807] [3110] [3426] [3749] [3793] [4809] [5236] [4714] [5062] 
+
+
+[unlock]Thread 0 local step: 4, args current_step: 0
+[exit]Thread 0 is exiting (1>16) at local step 4 and global step 0
+[]Thread 1: [108] [822] [867] [1499] [1566] [2132] [2273] [2807] [3110] [3426] [3749] [3793] [4809] [5236] [4714] [5062] 
+
+
+[unlock]Thread 1 local step: 4, args current_step: 0
+[exit]Thread 1 is exiting (1>16) at local step 4 and global step 0
+[]Thread 2: [108] [822] [867] [1499] [1566] [2132] [2273] [2807] [3110] [3426] [3749] [3793] [4809] [5236] [4714] [5062] 
+
+
+[unlock]Thread 2 local step: 4, args current_step: 0
+[exit]Thread 2 is exiting (1>16) at local step 4 and global step 0
+[]Thread 3: [108] [822] [867] [1499] [1566] [2132] [2273] [2807] [3110] [3426] [3749] [3793] [4809] [5236] [4714] [5062] 
+
+
+[unlock]Thread 3 local step: 4, args current_step: 0
+[exit]Thread 3 is exiting (1>16) at local step 4 and global step 0
+108
+822
+867
+1499
+1566
+2132
+2273
+2807
+3110
+3426
+3749
+3793
+4809
+5236
+4714
+5062
