@@ -98,6 +98,7 @@ void *inclusive_scan(void *raw_ags) {
     int local_step = 0;
     int offset = args->offset;
     int start_index = thread_num * offset;
+    int current_step_offset = 1;
     while (1) {
         pthread_mutex_lock(&lock);
         if (local_step != 0 &&
@@ -107,7 +108,7 @@ void *inclusive_scan(void *raw_ags) {
         args->thread_completed_count++;
         pthread_mutex_unlock(&lock);
         int *elements = args->elements;
-        int current_step_offset = pow(2, local_step);
+//        int current_step_offset = pow(2, local_step);
         for (int i = start_index; i < elements_count && i < start_index + offset; i++) {
             if (i - current_step_offset >= 0) {
                 args->psums[i] = elements[i] + elements[i - current_step_offset];
@@ -115,7 +116,8 @@ void *inclusive_scan(void *raw_ags) {
         }
         wait_barrier(&barrier);
         local_step++;
-        if (pow(2, local_step) >= elements_count) {
+        current_step_offset = pow(2, local_step);
+        if (current_step_offset >= elements_count) {
             args->thread_count--;
             return NULL;
         }
