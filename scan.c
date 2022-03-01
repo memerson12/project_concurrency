@@ -81,9 +81,11 @@ void read_input_vector(const char *filename, int n, int *array) {
 
     int index = 0;
 
-    while (getline(&line, &len, fp) != -1) {
+    while (n > 0) {
+        getline(&line, &len, fp);
         array[index] = atoi(line);
         index++;
+        n--;
     }
 
     free(line);
