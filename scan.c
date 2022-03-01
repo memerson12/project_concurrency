@@ -151,7 +151,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < thread_count; i++) {
         local_thread_args *_local_thread_args = malloc(sizeof(local_thread_args));
         _local_thread_args->args = args;
-        _local_thread_args->thread_id = i;œ
+        _local_thread_args->thread_id = i;
         pthread_create(&threads[i], NULL, inclusive_scan, _local_thread_args);
     }
     for (int i = 0; i < thread_count; i++) {
