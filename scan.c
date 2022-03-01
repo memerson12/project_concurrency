@@ -6,7 +6,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-#define MAX_LINE_SIZE 256
+#define MAX_LINE_SIZE 1
 
 typedef struct __shared_thread_args {
     int *elements;
