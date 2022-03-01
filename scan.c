@@ -19,7 +19,6 @@ typedef struct __shared_thread_args {
 
 typedef struct __local_thread_args {
     shared_thread_args *args;
-    int local_step;
     int thread_id;
 } local_thread_args;
 
@@ -96,30 +95,33 @@ void *inclusive_scan(void *raw_ags) {
     shared_thread_args *args = _local_thread_args->args;
     int thread_num = _local_thread_args->thread_id;
     int elements_count = args->elements_count;
+    int local_step = 0;
     while (1) {
         pthread_mutex_lock(&lock);
-        if (_local_thread_args->local_step != 0 &&
-            args->thread_completed_count == args->thread_count * (_local_thread_args->local_step)) {
-            free(args->elements);
-            args->elements = malloc(sizeof(int) * elements_count);
+        printf("[%d] ", local_step);
+        for (int i = 0; i < elements_count; i++) {
+            printf("%d", args->psums[i]);
+        }
+        puts("\n");
+        if (local_step != 0 &&
+            args->thread_completed_count == args->thread_count * (local_step)) {
             memcpy(args->elements, args->psums, sizeof(int) * elements_count);
         }
         args->thread_completed_count++;
         pthread_mutex_unlock(&lock);
         int *elements = args->elements;
         int offset = args->offset;
-        int current_step = _local_thread_args->local_step;
+        int current_step = local_step;
         int start_index = thread_num * offset;
+        int current_step_offset = pow(2, current_step);
         for (int i = start_index; i < elements_count && i < start_index + offset; i++) {
-            if (i - pow(2, current_step) >= 0) {
-                args->psums[i] = elements[i] + elements[(int) (i - pow(2, current_step))];
-            } else {
-                args->psums[i] = elements[i];
+            if (i - current_step_offset >= 0) {
+                args->psums[i] = elements[i] + elements[i - current_step_offset];
             }
         }
         wait_barrier(&barrier);
-        _local_thread_args->local_step++;
-        if (pow(2, _local_thread_args->local_step) >= elements_count) {
+        local_step++;
+        if (pow(2, local_step) >= elements_count) {
             args->thread_count--;
             return NULL;
         }
@@ -151,7 +153,6 @@ int main(int argc, char *argv[]) {
         local_thread_args *_local_thread_args = malloc(sizeof(local_thread_args));
         _local_thread_args->args = args;
         _local_thread_args->thread_id = i;
-        _local_thread_args->local_step = 0;
         pthread_create(&threads[i], NULL, inclusive_scan, _local_thread_args);
     }
     for (int i = 0; i < thread_count; i++) {
