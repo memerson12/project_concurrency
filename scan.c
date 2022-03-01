@@ -14,6 +14,7 @@ typedef struct __shared_thread_args {
     int thread_completed_count;
     int elements_count;
     int thread_count;
+    int current_step_offset;
     int offset;
 } shared_thread_args;
 
@@ -98,15 +99,17 @@ void *inclusive_scan(void *raw_ags) {
     int local_step = 0;
     int offset = args->offset;
     int start_index = thread_num * offset;
-    int current_step_offset = 1;
+    int current_step_offset;
     while (1) {
         pthread_mutex_lock(&lock);
         if (local_step != 0 &&
             args->thread_completed_count == args->thread_count * (local_step)) {
             memcpy(args->elements, args->psums, sizeof(int) * elements_count);
+            args->current_step_offset = pow(2, local_step);
         }
         args->thread_completed_count++;
         pthread_mutex_unlock(&lock);
+        current_step_offset = args->current_step_offset;
         int *elements = args->elements;
 //        int current_step_offset = pow(2, local_step);
         for (int i = start_index; i < elements_count && i < start_index + offset; i++) {
@@ -116,7 +119,7 @@ void *inclusive_scan(void *raw_ags) {
         }
         wait_barrier(&barrier);
         local_step++;
-        current_step_offset = pow(2, local_step);
+//        current_step_offset = pow(2, local_step);
         if (current_step_offset >= elements_count) {
             args->thread_count--;
             return NULL;
@@ -138,6 +141,7 @@ int main(int argc, char *argv[]) {
     args->thread_completed_count = 0;
     args->psums = malloc(element_count * sizeof(int));
     args->elements_count = element_count;
+    args->elements_count = 1;
     args->thread_count = thread_count;
     args->offset = (int) (element_count / thread_count) + (element_count % thread_count == 0 ? 0 : 1);
     read_input_vector(filename, element_count, args->elements);
