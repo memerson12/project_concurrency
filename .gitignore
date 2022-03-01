@@ -1,0 +1,8 @@
+# Project exclude paths
+/cmake-build-debug/
+.idea/
+/scan_print
+/scan_print.c
+/scan_with_prints
+/scan_with_prints.c
+/Archive.zip
