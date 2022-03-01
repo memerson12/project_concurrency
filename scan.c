@@ -104,7 +104,10 @@ void *inclusive_scan(void *raw_ags) {
         pthread_mutex_lock(&lock);
         if (local_step != 0 &&
             args->thread_completed_count == args->thread_count * (local_step)) {
-            memcpy(args->elements, args->psums, sizeof(int) * elements_count);
+            int* temp = args->elements;
+            args->elements = args->psums;
+            args->psums = temp;
+//            memcpy(args->elements, args->psums, sizeof(int) * elements_count);
         }
         args->thread_completed_count++;
         pthread_mutex_unlock(&lock);
@@ -148,7 +151,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < thread_count; i++) {
         local_thread_args *_local_thread_args = malloc(sizeof(local_thread_args));
         _local_thread_args->args = args;
-        _local_thread_args->thread_id = i;
+        _local_thread_args->thread_id = i;œ
         pthread_create(&threads[i], NULL, inclusive_scan, _local_thread_args);
     }
     for (int i = 0; i < thread_count; i++) {
