@@ -98,11 +98,6 @@ void *inclusive_scan(void *raw_ags) {
     int local_step = 0;
     while (1) {
         pthread_mutex_lock(&lock);
-        printf("[%d] ", local_step);
-        for (int i = 0; i < elements_count; i++) {
-            printf("%d", args->psums[i]);
-        }
-        puts("\n");
         if (local_step != 0 &&
             args->thread_completed_count == args->thread_count * (local_step)) {
             memcpy(args->elements, args->psums, sizeof(int) * elements_count);
