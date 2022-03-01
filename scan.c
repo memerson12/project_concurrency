@@ -110,15 +110,15 @@ void *inclusive_scan(void *raw_ags) {
 //            memcpy(args->elements, args->psums, sizeof(int) * elements_count);
         }
         args->thread_completed_count++;
-//        printf("%s", "Elements: ");
-//        for (int i = 0; i < args->elements_count; i++) {
-//            printf("%d ", args->elements[i]);
-//        }
-//        printf("thread_count%s", "Psum so far: ");
-//        for (int i = 0; i < args->elements_count; i++) {
-//            printf("%d ", args->psums[i]);
-//        }
-//        puts("");
+        printf("%s", "Elements: ");
+        for (int i = 0; i < args->elements_count; i++) {
+            printf("%d ", args->elements[i]);
+        }
+        printf("thread_count%s", "Psum so far: ");
+        for (int i = 0; i < args->elements_count; i++) {
+            printf("%d ", args->psums[i]);
+        }
+        puts("");
         pthread_mutex_unlock(&lock);
         int *elements = args->elements;
         int current_step_offset = pow(2, local_step);
