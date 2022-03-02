@@ -43,9 +43,9 @@ void init_barrier(barrier_t *barrier, int thread_count) {
 
 void barrier_1(barrier_t *barrier) {
     sem_wait(&barrier->lock);
-    if (++barrier->count == barrier->thread_count) {
-        int i;
-        for (i = 0; i < barrier->thread_count; i++) {
+    barrier->count++;
+    if (barrier->count == barrier->thread_count) {
+        for (int i = 0; i < barrier->thread_count; i++) {
             sem_post(&barrier->stop_1);
         }
     }
@@ -55,9 +55,9 @@ void barrier_1(barrier_t *barrier) {
 
 void barrier_2(barrier_t *barrier) {
     sem_wait(&barrier->lock);
-    if (--barrier->count == 0) {
-        int i;
-        for (i = 0; i < barrier->thread_count; i++) {
+    barrier->count--;
+    if (barrier->count == 0) {
+        for (int i = 0; i < barrier->thread_count; i++) {
             sem_post(&barrier->stop_2);
         }
     }
